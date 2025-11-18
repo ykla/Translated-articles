@@ -100,7 +100,7 @@ round-trip min/avg/max/stddev = 115.169/116.160/117.918/1.247 ms
 现在我们将引导安装 **pkg(8)**，然后将其数据库更新到最新可用版本。
 
 ```sh
-# env ASSUME_ALWAYS_YES=yes pkg update -f
+# env ASSUME_ALWAYS_YES = yes pkg update -f
 Bootstrapping pkg from pkg+http://pkg.FreeBSD.org/FreeBSD:11:amd64/latest, please wait...
 Verifying signature with trusted certificate pkg.freebsd.org.2013102301... done
 [syncthing.local] Installing pkg-1.10.5_1...
@@ -191,13 +191,14 @@ syncthing-0.14.48:
 
 ## 配置
 
-如上所示，我们已经在 **/etc/rc.conf** 文件中添加了 **syncthing_enable=YES**。
+如上所示，我们已经在 **/etc/rc.conf** 文件中添加了 **syncthing_enable = YES**。
 
 
 ```sh
 # /usr/local/etc/rc.d/syncthing rcvar
 # syncthing
 #
+
 syncthing_enable="NO"
 #   (default: "")
 
@@ -213,6 +214,7 @@ syncthing_enable="NO"
       9 # Add the following lines to /etc/rc.conf.local or /etc/rc.conf
      10 # to enable this service:
      11 #
+
      12 # syncthing_enable (bool):      Set to NO by default.
      13 #                               Set it to YES to enable syncthing.
      14 # syncthing_home (path):        Directory where syncthing configuration
@@ -235,7 +237,7 @@ ls: /var/log/syncthing.log: No such file or directory
 
 # :> /var/log/syncthing.log
 
-# chown syncthing:syncthing /var/log/syncthing.log
+# chown syncthing: syncthing /var/log/syncthing.log
 
 # ls -l /var/log/syncthing.log
 -rwxr-xr-x  1 syncthing  syncthing  0 2018.08.19 01:06 /var/log/syncthing.log
@@ -245,12 +247,12 @@ ls: /var/log/syncthing.log: No such file or directory
 
 ```sh
 # cat > /etc/newsyslog.conf.d/syncthing.conf << __EOF
-# logfilename              [owner:group]     mode  count  size  when  flags [/pid_file]
+# logfilename              [owner: group]     mode  count  size  when  flags [/pid_file]
 /var/log/syncthing.log  syncthing:syncthing  640   7      100   *     JC
 __EOF
 
 # cat /etc/newsyslog.conf.d/syncthing.conf
-# logfilename              [owner:group]     mode  count  size  when  flags [/pid_file]
+# logfilename              [owner: group]     mode  count  size  when  flags [/pid_file]
 /var/log/syncthing.log  syncthing:syncthing  640   7      100   *     JC
 
 # newsyslog -v | grep syncthing
@@ -273,7 +275,7 @@ daemon: pidfile ``/var/run/syncthing.pid'': Permission denied
  
 # :> /var/run/syncthing.pid
 
-# chown syncthing:syncthing /var/run/syncthing.pid
+# chown syncthing: syncthing /var/run/syncthing.pid
 
 # ls -l /var/run/syncthing.pid
 -rwxr-xr-x  1 syncthing  syncthing  0 2018.08.19 01:08 /var/run/syncthing.pid
@@ -373,7 +375,7 @@ ls: /Sync: No such file or directory
 ```sh
 # mkdir /syncthing
 
-# chown syncthing:syncthing /syncthing
+# chown syncthing: syncthing /syncthing
 
 # chmod 750 /syncthing
 
@@ -635,7 +637,7 @@ Android 手机 **SM-A320FL** 设备现在在 **Remote Devices** 区域可见。
 
 现在，你的 Camera 文件已经同步完成，可作为备份使用。
 
-FreeBSD 实例上的完整 Syncthing 配置文件可在此获取：[**/usr/local/etc/syncthing/config.xml**](https://vermaden.wordpress.com/wp-content/uploads/2018/08/config-xml.key "config.xml")。下载后，将文件从 ***.xml.key** 重命名为***.xml**（**WordPress** 限制所致）。
+FreeBSD 实例上的完整 Syncthing 配置文件可在此获取：[**/usr/local/etc/syncthing/config.xml**](https://vermaden.wordpress.com/wp-content/uploads/2018/08/config-xml.key "config.xml")。下载后，将文件从 ***.xml.key* * 重命名为***.xml **（** WordPress** 限制所致）。
 
 ## 更新 1
 

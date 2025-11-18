@@ -23,7 +23,7 @@
 
 ## 较旧的 FreeBSD 版本
 
-在 FreeBSD 10 之前，如果要使用新的 **pkg(8)** 工具，非旧的 **pkg_*** 工具，则需要在 **/etc/make.conf** 文件中加入 **WITH_PKGNG=yes**。
+在 FreeBSD 10 之前，如果要使用新的 **pkg(8)** 工具，非旧的 **pkg_** * 工具，则需要在 * */etc/make.conf* * 文件中加入 * *WITH_PKGNG = yes**。
 
 目前受支持的 FreeBSD RELEASE 版本只有最近发布的 12.0 以及更加稳定和完善的 11.2，因此无需在 **/etc/make.conf** 文件中加入某些内容来使用 **pkg(8)** 框架。
 
@@ -51,6 +51,7 @@ SQLite version 3.15.2 2016-11-28 19:13:37
 Enter ".help" for usage hints.
 > .q
 #
+
 ```
 
 若由于某种原因你发现 **pkg(8)** 工具无法工作或已经损坏，你可以使用 **sqlite3** 包中的 **sqlite3** 命令连接到它。不要使用软件包 **sqlite**，因为它是 SQLite 的 2.x 版本，而这与 **pkg(8)** 使用的 3.x 版本不向前兼容。
@@ -68,6 +69,7 @@ SQLite version 3.26.0 2018-12-01 12:34:55
 Enter ".help" for usage hints.
 > .q
 #
+
 ```
 
 ## 锁定/解锁
@@ -178,7 +180,7 @@ Message from pkg-provides-0.5.0:
 然后配置文件 **/usr/local/etc/pkg.conf**。
 
 ```sh
-# cat << __EOF__ >> /usr/local/etc/pkg.conf
+# cat << __EOF__ > > /usr/local/etc/pkg.conf
 PKG_PLUGINS_DIR = "/usr/local/lib/pkg/";
 PKG_ENABLE_PLUGINS = true;
 PLUGINS [ provides ];
@@ -187,7 +189,7 @@ __EOF__
 
 现在你就有了新命令 **pkg provides**，如下所示。
 
-```sh
+``` sh
 # pkg provides
 usage: pkg provides [-uf] pattern
 
@@ -199,7 +201,7 @@ Provides database not found, please update first.
 
 你可以使用选项 **-u** 来更新 ‘provides’ 数据库。
 
-```sh
+``` sh
 # pkg provides -u
 Fetching provides database: 100%   29 MiB 700.9kB/s    00:43    
 Extracting database....success
@@ -207,7 +209,7 @@ Extracting database....success
 
 **pkg provides** 插件示例用法
 
-```sh
+``` sh
 # pkg provides bin/pldd
 Name    : ptools2-0.5
 Desc    : Toolset based on Solaris ptools functionality
@@ -230,7 +232,7 @@ pkg: No packages available to install matching '/compat/linux/usr/bin/pldd' have
 
 下次你执行命令 **pkg upgrade** 时，也会看到 provides 数据库的刷新。
 
-```sh
+``` sh
 # pkg upgrade
 Updating FreeBSD repository catalogue...
 Fetching meta.txz: 100%    944 B   0.9kB/s    00:01    
@@ -246,7 +248,7 @@ Checking integrity... done (0 conflicting)
 
 **pkg provides** 数据库在目录 **/var/db/pkg** 中会占用相当量的空间。
 
-```sh
+``` sh
 # file /var/db/pkg/* /var/db/pkg/*/* | sort -n
 /var/db/pkg/FreeBSD.meta: ASCII text
 /var/db/pkg/local.sqlite: SQLite 3.x database, user version 34, last written using SQLite version 3015002
@@ -258,7 +260,7 @@ Checking integrity... done (0 conflicting)
 
 如果你使用像 LZ4 这样的 ZFS 压缩，那么它占用的空间就不会太大，如下所示。
 
-```sh
+``` sh
 # du -csm /var/db/pkg/*
 1       /var/db/pkg/FreeBSD.meta
 32      /var/db/pkg/local.sqlite
@@ -271,7 +273,7 @@ Checking integrity... done (0 conflicting)
 
 ……但是如果你使用 UFS，那么这个将近 600 MB 的数据库可能会让你有点吃惊 :🙂:
 
-```sh
+``` sh
 # du -csmA /var/db/pkg/*
 1       /var/db/pkg/FreeBSD.meta
 68      /var/db/pkg/local.sqlite
@@ -285,7 +287,7 @@ Checking integrity... done (0 conflicting)
 
 虽然 **pkg provides** 可以提供尚未安装的软件包中文件的相关信息，**pkg which** 命令则是经典 UNIX **which** 命令在 **pkg(8)** 中的对应。它显示某个文件属于哪个软件包（或者根本不属于任何软件包）。
 
-```sh
+``` sh
 # pkg which /boot/modules/drm.ko
 /boot/modules/drm.ko was installed by package drm-fbsd11.2-kmod-4.11g20181210
 
@@ -297,7 +299,7 @@ Checking integrity... done (0 conflicting)
 
 有时同时使用两个 **which** 命令会更快地得到所需的答案。
 
-```sh
+``` sh
 # which firefox
 /usr/local/bin/firefox
 
@@ -309,7 +311,7 @@ Checking integrity... done (0 conflicting)
 
 有时你可能会看到如下情况。
 
-```sh
+``` sh
 # pkg install parallel
 Updating FreeBSD repository catalogue...
 FreeBSD repository is up to date.
@@ -319,7 +321,7 @@ pkg: Cannot get an advisory lock on a database, it is locked by another process
 
 …但是你并没有启动任何其他 **pkg(8)** 实例，这到底是怎么回事呢？我们来看一下 **ps(1)** 的输出。
 
-```sh
+``` sh
 # ps ax | grep pkg
  8540  -  S        0:00.00 /bin/sh - /usr/local/etc/periodic/daily/411.pkg-backup
  8551  -  S        0:00.00 /usr/local/sbin/pkg shell .dump
@@ -330,7 +332,7 @@ FreeBSD 的 **periodic** 脚本正在执行它们的工作。
 
 要查看具体是哪些脚本，可以查看这里。
 
-```sh
+``` sh
 # find /etc/periodic /usr/local/etc/periodic -name \*pkg\*
 /usr/local/etc/periodic/daily/490.status-pkg-changes
 /usr/local/etc/periodic/daily/411.pkg-backup
@@ -341,27 +343,27 @@ FreeBSD 的 **periodic** 脚本正在执行它们的工作。
 
 如果你认为这些活动中某些是不必要的，可以在 **/etc/periodic.conf** 文件中使用这些值将它们禁用。
 
-```sh
-# find /etc/periodic /usr/local/etc/periodic -name \*pkg\* | xargs grep -m 1 -E -o "[a-z_]+_enable" 
-/usr/local/etc/periodic/daily/490.status-pkg-changes:daily_status_pkgng_changes_enable
-/usr/local/etc/periodic/daily/411.pkg-backup:daily_backup_pkgng_enable
-/usr/local/etc/periodic/security/460.pkg-checksum:security_status_pkgchecksum_enable
-/usr/local/etc/periodic/security/410.pkg-audit:security_status_pkgaudit_enable
-/usr/local/etc/periodic/weekly/400.status-pkg:weekly_status_pkgng_enable
+``` sh
+# find /etc/periodic /usr/local/etc/periodic -name \*pkg\* | xargs grep -m 1 -E -o " [a-z_]+_enable " 
+/usr/local/etc/periodic/daily/490.status-pkg-changes: daily_status_pkgng_changes_enable
+/usr/local/etc/periodic/daily/411.pkg-backup: daily_backup_pkgng_enable
+/usr/local/etc/periodic/security/460.pkg-checksum: security_status_pkgchecksum_enable
+/usr/local/etc/periodic/security/410.pkg-audit: security_status_pkgaudit_enable
+/usr/local/etc/periodic/weekly/400.status-pkg: weekly_status_pkgng_enable
 ```
 
 例如，如果你想禁用 **/usr/local/etc/periodic/daily/490.status-pkg-changes** 的执行，你需要在 **/etc/periodic.conf** 文件中添加 **daily_status_pkgng_changes_enable=no**。
 
 接下来再检查一次 **ps(1)** 输出。
 
-```sh
+``` sh
 # ps ax | grep pkg
  8574  0  S+       0:00.00 grep --color pkg
 ```
 
 **periodic** 任务已经完成。你现在可以像平常一样安装你的包了。
 
-```sh
+``` sh
 # pkg install parallel
 Updating FreeBSD repository catalogue...
 FreeBSD repository is up to date.
@@ -385,7 +387,7 @@ Proceed with this action? [y/N]: n
 
 虽然 **pkg stats** 命令可以提供已安装包的一些统计信息，但它对于查找哪个包占用空间最多并不是很有用。
 
-```sh
+``` sh
 # pkg stats
 Local package database:
         Installed packages: 1081
@@ -400,7 +402,7 @@ Remote package database(s):
 
 还有 **pkg size** 命令，它只会显示包占用的空间，但不会显示包名……没多大用处。
 
-```sh
+``` sh
 # pkg size | head
 10.5MiB
 2.06MiB
@@ -416,7 +418,7 @@ Remote package database(s):
 
 此外，**pkg size** 的手册页并不存在。
 
-```sh
+``` sh
 # man pkg-size
 No manual entry for pkg-size
 ```
@@ -425,8 +427,8 @@ No manual entry for pkg-size
 
 使用以下别名可以按空间使用量对包进行排序。我将输出限制为最大 20 个包，但你可以根据需要修改。
 
-```sh
-# alias pkg-size='pkg info -as | sort -k 2 -h | tail -20 | column -t'
+``` sh
+# alias pkg-size ='pkg info -as | sort -k 2 -h | tail -20 | column -t'
 # which pkg-size
 pkg-size: aliased to pkg info -as | sort -k 2 -h | tail -20 | column -t
 # pkg-size
@@ -458,7 +460,7 @@ llvm60-6.0.1_5           818MiB
 
 下面是简短名称示例。
 
-```sh
+``` sh
 # pkg autor
 # pkg upg
 # pkg inf
@@ -470,7 +472,7 @@ llvm60-6.0.1_5           818MiB
 
 许多 **pkg(8)** 的问题都是由旧的元数据数据库引起的。如果你遇到任何 **pkg(8)** 问题，首先应如下面所示强制刷新其数据库。
 
-```sh
+``` sh
 # pkg update -f
 Updating FreeBSD repository catalogue...
 Fetching meta.txz: 100%    944 B   0.9kB/s    00:01    
@@ -492,7 +494,7 @@ All repositories are up to date.
 
 我从命令 **portmaster --check-depends** 开始，但在系统询问是否修复时选择了“**n**”，因为这会不必要地降级大量软件包。
 
-```sh
+``` sh
 # portmaster --check-depends
 (...)
 Checking dependencies: evince
@@ -535,7 +537,7 @@ www/libxul19 dependency failed to be fixed
 
 让我们看看 **pkg(8)** 显示我们已经安装了哪些软件包。
 
-```sh
+``` sh
 # pkg info | grep libxul
 libxul-10.0.12                 Mozilla runtime package that can be used to bootstrap XUL+XPCOM apps
 
@@ -547,46 +549,46 @@ www/libxul
 
 在 **pkg(8)** 被引入之前，只需使用 **grep -r** 搜索整个 **/var/db/pkg** 目录及其“文件数据库”就很容易，但现在情况复杂得多，因为软件包数据库保存在 SQLite 数据库中。使用 **pkg shell** 命令，你可以连接到该数据库。让我们看看能找到什么。
 
-```sh
+``` sh
 # pkg shell
 SQLite version 3.7.13 2012-06-11 02:05:22
 Enter ".help" for instructions
 Enter SQL statements terminated with a ";"
-sqlite> .databases
+sqlite > .databases
 seq  name             file
 ---  ---------------  ----------------------------------------------------------
 0    main             /var/db/pkg/local.sqlite
-sqlite> .tables
+sqlite > .tables
 categories       licenses         pkg_directories  scripts
 deps             mtree            pkg_groups       shlibs
 directories      options          pkg_licenses     users
 files            packages         pkg_shlibs
 groups           pkg_categories   pkg_users
-sqlite> .header on
-sqlite> .mode column
-sqlite> pragma table_info(deps);
+sqlite > .header on
+sqlite > .mode column
+sqlite > pragma table_info(deps);
 cid         name        type        notnull     dflt_value  pk
 ----------  ----------  ----------  ----------  ----------  ----------
 0           origin      TEXT        1                       1
 1           name        TEXT        1                       0
 2           version     TEXT        1                       0
 3           package_id  INTEGER     0                       1
-sqlite> .quit
+sqlite > .quit
 ```
 
 所以现在我们知道，“**deps**” 表可能就是我们要找的 ;)。
 
 由于 **pkg shell** 在浏览 SQLite 时功能相当有限，我将直接使用命令 **sqlite3**。所谓有限是指，你不能直接输入 **pkg shell "select * from deps;"** 这样的查询，而是需要先启动 **pkg shell**，然后才能输入查询语句。
 
-```sh
-# sqlite3 -column /var/db/pkg/local.sqlite "select * from deps;" | grep libxul
+``` sh
+# sqlite3 -column /var/db/pkg/local.sqlite " select * from deps;" | grep libxul
 www/libxul19   libxul      1.9.2.28_1  104
 ```
 
 第二列是 **name**，所以我们可以尝试使用它。
 
-```sh
-sqlite3 -header -column /var/db/pkg/local.sqlite "select * from deps where name='libxul';"
+``` sh
+sqlite3 -header -column /var/db/pkg/local.sqlite " select * from deps where name ='libxul';"
 origin        name        version     package_id
 ------------  ----------  ----------  ----------
 www/libxul19  libxul      1.9.2.28_1  104
@@ -594,32 +596,32 @@ www/libxul19  libxul      1.9.2.28_1  104
 
 现在我们已经找到了“有问题”的依赖条目，可以稍微修改它，使其与实际已安装的包状态一致。
 
-```sh
-# sqlite3 /var/db/pkg/local.sqlite "update deps set origin='www/libxul' where name='libxul';"
-# sqlite3 /var/db/pkg/local.sqlite "update deps set version='10.0.12' where name='libxul';"
+``` sh
+# sqlite3 /var/db/pkg/local.sqlite "update deps set origin ='www/libxul' where name ='libxul';"
+# sqlite3 /var/db/pkg/local.sqlite "update deps set version ='10.0.12' where name ='libxul';"
 ```
 
 当然，你也可以使用“官方”方法，通过 **pkg shell** 命令来操作。
 
-```sh
+``` sh
 # pkg shell
 SQLite version 3.7.13 2012-06-11 02:05:22
 Enter ".help" for instructions
 Enter SQL statements terminated with a ";"
-sqlite> update deps set origin='www/libxul' where name='libxul';
-sqlite> update deps set version='10.0.12' where name='libxul';
-sqlite> .header on
-sqlite> .mode column
-sqlite> select * from deps where name='libxul';
+sqlite > update deps set origin ='www/libxul' where name ='libxul';
+sqlite > update deps set version ='10.0.12' where name ='libxul';
+sqlite > .header on
+sqlite > .mode column
+sqlite > select * from deps where name ='libxul';
 origin      name        version     package_id
 ----------  ----------  ----------  ----------
 www/libxul  libxul      10.0.12     104
-sqlite> .quit
+sqlite > .quit
 ```
 
 现在 **portmaster** 感到满意，不会再命令依赖缺失了。
 
-```sh
+``` sh
 # portmaster --check-depends
 (...)
 Checking dependencies: zenity
@@ -635,14 +637,14 @@ Checking dependencies: zsh
 它叫 **pkg set**，在 **man pkg-set** 中最有用的两个选项是。
 
 
-```sh
-  -n oldname:newname, --change-name oldname:newname
+``` sh
+  -n oldname: newname, --change-name oldname: newname
        Change the package name of a given dependency from oldname to newname.
        将指定依赖项的包名从 `oldname` 修改为 `newname`。
 
 (...)
 
-  -o oldorigin:neworigin, --change-origin oldorigin:neworigin
+  -o oldorigin: neworigin, --change-origin oldorigin: neworigin
        Change the port origin of a given dependency from oldorigin to neworigin.
        This corresponds to the port directory that the package originated from.
        Typically, this is only needed for upgrading a library or package that
@@ -665,7 +667,7 @@ Checking dependencies: zsh
 
 该文件描述了 Ports 中的重要变更（以及由于包是由 Ports 构建而来的，因此也涵盖了包的变更）。
 
-```sh
+``` sh
 # less /usr/ports/UPDATING
 
 (...)
@@ -680,7 +682,7 @@ Checking dependencies: zsh
   To rename an installed package to match the new naming scheme,
   for example, for ansible24, run:
 
-   # pkg set -n ansible24:py27-ansible24
+   # pkg set -n ansible24: py27-ansible24
 
 (...)
 
@@ -696,7 +698,7 @@ Checking dependencies: zsh
   #
   # Keep ruby 2.3 as default version
   #
-  DEFAULT_VERSIONS+=ruby=2.3
+  DEFAULT_VERSIONS+= ruby = 2.3
 
   If you wish to update to the new default version, you need to first stop any
   software that uses ruby. Then, you will need to follow these steps, depending
@@ -715,7 +717,7 @@ Checking dependencies: zsh
 
   # pkg delete -f ruby portupgrade
   # make -C /usr/ports/ports-mgmt/portupgrade install clean
-  # pkg set -o lang/ruby23:lang/ruby24
+  # pkg set -o lang/ruby23: lang/ruby24
   # portupgrade -x ruby-2.4.\* -fr lang/ruby24
 
 (...)
@@ -723,7 +725,7 @@ Checking dependencies: zsh
 
 **pkg(8)** 框架也提供了相应工具，即 **pkg updating** 命令。具体细节可查看 **man pkg-updating** 页面。最常见的用法是使用参数 **-d** 并指定日期，如下所示。
 
-```sh
+``` sh
 # pkg updating -d 20190101
 20190103:
   AFFECTS: users of multimedia/vlc*
@@ -750,7 +752,7 @@ Checking dependencies: zsh
 
 使用 **beadm** 命令的操作流程如下。
 
-```sh
+``` sh
 # beadm create safepoint
 Created successfully
 
@@ -772,7 +774,7 @@ safepoint    -      -          316.0K 2019-01-16 23:03
 
 例如，要“模拟” **pkg info -r pkg-name** 参数（显示依赖 **pkg-name** 的软件包列表），可以使用如下方式的 **pkg query** 命令。
 
-```sh
+``` sh
 # pkg info -r sqlite3
 sqlite3-3.26.0:
         colord-gtk-0.1.26
@@ -823,12 +825,12 @@ www/firefox
 
 如果你想知道每个包的初次安装时间，可以使用下面这个方法。
 
-```sh
+``` sh
 # pkg query "%t %n-%v" \
     | sort -n \
     | while read timestamp pkgname
       do
-        echo "$(date -r $timestamp) $pkgname"
+        echo " $(date -r $ timestamp) $pkgname "
       done | ( head; echo; tail )
 Fri Jul  7 14:17:29 CEST 2017 libpciaccess-0.13.5
 Fri Jul  7 14:17:35 CEST 2017 libedit-3.1.20170329_2,1
@@ -855,7 +857,7 @@ Wed Jan 16 23:08:26 CET 2019 p5-URI-1.76
 
 你也可以显示那些不会被命令 **pkg autoremove** 移除的包，因为它们是你直接安装的。
 
-```sh
+``` sh
 # pkg query -e "%a != 1" "%n" | tail
 xmp
 xorg

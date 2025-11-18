@@ -193,7 +193,7 @@ Battery '1' model '45N1041' has efficiency: 78%
 
 if [ ${#} -ne 1 ]
 then
-  echo "usage: ${0##*/} BATTERY"
+  echo "usage: ${0##*/} BATTERY "
   exit
 fi
 
@@ -399,7 +399,7 @@ powerdxx_flags="-n adaptive -a hiadaptive -b adaptive -m 800 -M 1600"
 - **performance_cx_lowest**
 - **economy_cx_lowest**
 
-**economy_cx_lowest** 参数用于电池供电时，**performance_cx_lowest** 参数用于电源供电时。两者都通过 **rc(8)** 子系统使用的 **/etc/rc.d/power_profile** 脚本进行设置。该脚本会设置 **hw.acpi.cpu.cx_lowest** 参数，从而控制所有 **dev.cpu.*.cx_lowest** 的值。当你连接或断开电源时，也可以在 **/var/log/messages** 文件中跟踪这些变化。
+**economy_cx_lowest** 参数用于电池供电时，**performance_cx_lowest** 参数用于电源供电时。两者都通过 **rc(8)** 子系统使用的 **/etc/rc.d/power_profile** 脚本进行设置。该脚本会设置 **hw.acpi.cpu.cx_lowest** 参数，从而控制所有 **dev.cpu.*.cx_lowest* * 的值。当你连接或断开电源时，也可以在 * */var/log/messages** 文件中跟踪这些变化。
 
 ```sh
 % tail -f /var/log/messages
@@ -447,7 +447,7 @@ dev.cpu.0.freq_levels: 2501/35000 2500/35000 2200/29755 2000/26426 1800/23233 16
 最高值（左侧）为 **2501/35000**，因此我需要将 **dev.cpu.0.freq** 参数设置为该值以启用睿频模式。你只需要使用“频率”部分的值，因为如果连同功耗描述一起设置，会导致失败。
 
 ```sh
-# sysctl dev.cpu.0.freq=2501/35000
+# sysctl dev.cpu.0.freq = 2501/35000
 sysctl: invalid integer '2501/35000'
 ```
 
@@ -455,7 +455,7 @@ sysctl: invalid integer '2501/35000'
 
 
 ```sh
-# sysctl dev.cpu.0.freq=2501
+# sysctl dev.cpu.0.freq = 2501
 dev.cpu.0.freq: 800 -> 2501
 ```
 
@@ -588,7 +588,7 @@ FreeBSD 提供了对未附加驱动的设备不供电的节能选项。该选项
   hw.pci.do_power_nodriver=3
 ```
 
-**pciconf(8)** 工具可以显示系统中的设备以及附加到它们的驱动程序。如果设备没有附加驱动，你会看到 **none*@**，例如下面的 **none0@**。你还可以查看大多数驱动的手册页，例如 **em(4)** 查看 **em0** 设备，或 **xhci(4)** 查看 **xhci0** 设备。
+**pciconf(8)** 工具可以显示系统中的设备以及附加到它们的驱动程序。如果设备没有附加驱动，你会看到 **none *@* *，例如下面的 * *none0@* *。你还可以查看大多数驱动的手册页，例如 * *em(4)* * 查看 * *em0* * 设备，或 * *xhci(4)* * 查看 * *xhci0** 设备。
 
 ```sh
 % pciconf -l
@@ -669,7 +669,7 @@ hw.acpi.supported_sleep_state: S3 S4 S5
 
 这与手册页 **zzz(8)** 中的说明完全相同。
 
-你还可以设置 **sysctl(8)** 值，使每次关闭笔记本盖时系统进入睡眠状态。为此，将 **hw.acpi.lid_switch_state=S3** 添加到 **/etc/sysctl.conf** 文件中。无论是通过命令还是关闭盖子让硬件进入睡眠状态，打开盖子后笔记本都会恢复。当然，如果在执行 **zzz(8)** 命令后没有关闭盖子，你需要关闭并重新打开盖子，或按下电源按钮以恢复。当然，你也可以对桌面或甚至备份服务器执行挂起/恢复操作，这并不仅限于笔记本。
+你还可以设置 **sysctl(8)** 值，使每次关闭笔记本盖时系统进入睡眠状态。为此，将 **hw.acpi.lid_switch_state = S3** 添加到 **/etc/sysctl.conf** 文件中。无论是通过命令还是关闭盖子让硬件进入睡眠状态，打开盖子后笔记本都会恢复。当然，如果在执行 **zzz(8)** 命令后没有关闭盖子，你需要关闭并重新打开盖子，或按下电源按钮以恢复。当然，你也可以对桌面或甚至备份服务器执行挂起/恢复操作，这并不仅限于笔记本。
 
 此外，不同厂商的 ACPI 子系统还有专用内核模块，如下：
 
@@ -935,7 +935,7 @@ FreeBSD 上也有一些厂商提供的工具，例如 **powermon(8)**。请注�
 
 有时你可以将 DVD 光驱替换为内部辅助电池。例如 Dell Latitude D630、ThinkPad T420s 或 ThinkPad T500/W500。有些厂商提供整块贴合笔记本底部的扩展电池，例如 ThinkPad X220、T420/T520/W520 或第一代 ThinkPad X1 笔记本的扩展电池。
 
-希望这些信息能帮助你在 FreeBSD 上延长一些电池使用时间（或至少节省一些电量） :🙂:
+希望这些信息能帮助你在 FreeBSD 上延长一些电池使用时间（或至少节省一些电量） : 🙂:
 
 ## 更新 1 – 显卡节能
 

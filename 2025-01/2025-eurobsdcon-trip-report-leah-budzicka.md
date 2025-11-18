@@ -5,7 +5,7 @@
 - 作者：Leah Budzicka
 
 
-作为计算机科学三年级学生，同时也是我所在大学操作系统学生俱乐部 The :wheel Group 的 BOFH（Bastard Operator From Hell, 地狱来的混蛋操作员），我一直关注着 BSD，但始终未曾真正腾出时间去深入探索。
+作为计算机科学三年级学生，同时也是我所在大学操作系统学生俱乐部 The : wheel Group 的 BOFH（Bastard Operator From Hell, 地狱来的混蛋操作员），我一直关注着 BSD，但始终未曾真正腾出时间去深入探索。
 
 有一天，在浏览 Fediverse 动态时，我看到了 FreeBSD 基金会在 Mastodon 上发布的旅行资助截止日期公告。出于一时兴起，我提交了申请——想着这是一个学习的好机会，也可以把新的见解带回学生俱乐部。你可以想象，当我得知申请被批准时，我多么惊讶！
 
@@ -33,7 +33,7 @@
 
 这是我的第一次 BSD 会议，但绝不会是最后一次。
 
-展望将来，我计划通过 The :wheel Group 在我的大学开展 FreeBSD 讲座和工作坊，将其融入自己的工作流程，并在学习和未来职业生涯中持续为 FreeBSD 做贡献。
+展望将来，我计划通过 The : wheel Group 在我的大学开展 FreeBSD 讲座和工作坊，将其融入自己的工作流程，并在学习和未来职业生涯中持续为 FreeBSD 做贡献。
 
 此致
 敬礼，

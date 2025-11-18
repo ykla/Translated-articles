@@ -26,14 +26,14 @@
 Podman 默认会把容器存储在 `/var/db/containers`，所以你可能想为它创建专用的 ZFS 文件系统：
 
 ```sh
-# zfs create -o mountpoint=/var/db/containers zroot/containers
+# zfs create -o mountpoint =/var/db/containers zroot/containers
 ```
 
 如果我们希望访问运行在容器中的任何服务，就需要使用 pf 防火墙。podman 有个示例配置文件，让事情变得简单：
 
 ```sh
 # cp /usr/local/etc/containers/pf.conf.sample /etc/pf.conf
-# sysctl net.pf.filter_local=1
+# sysctl net.pf.filter_local = 1
 ```
 
 **别忘了在启用并启动 pf 服务之前，更新复制文件中的接口变量。** 当然，如果你已经在运行 pf，并且已经有配置文件，请不要直接覆盖。只需从示例文件中取出相关部分，添加到现有配置中即可。
@@ -98,8 +98,8 @@ doas podman run -it --os=linux docker.io/phips/pandas:v3 /bin/bash
 
 就是这样。在 FreeBSD 上启动并运行容器既简单又快捷。同时，它也非常容易使用旧的容器——为将底层平台迁移到一个精心设计、坚如磐石的操作系统提供了路径。
 
-FreeBSD 手册很快将更新，加入 OCI 容器的正式文档，但与此同时，你可以查看核心成员 Dave Cottlehuber 的[工作文档](https://docs.skunkwerks.at/s/fUiAmi4pE)。
+FreeBSD 手册很快将更新，加入 OCI 容器的正式文档，但与此同时，你可以查看核心成员 Dave Cottlehuber 的 [工作文档](https://docs.skunkwerks.at/s/fUiAmi4pE)。
 
-我们会定期发布新的技术主题文章和视频，因此请务必订阅 [YouTube 频道](https://youtube.com/@freebsdproject)，并在你喜欢的 RSS 阅读器中关注[此订阅源](https://freebsdfoundation.org/our-work/latest-updates/)。如果你希望通过电子邮件接收更新，也可以订阅[我们的通讯](https://mailchi.mp/freebsdfoundation.org/newsletter-sign-up)。
+我们会定期发布新的技术主题文章和视频，因此请务必订阅 [YouTube 频道](https://youtube.com/@freebsdproject)，并在你喜欢的 RSS 阅读器中关注 [此订阅源](https://freebsdfoundation.org/our-work/latest-updates/)。如果你希望通过电子邮件接收更新，也可以订阅 [我们的通讯](https://mailchi.mp/freebsdfoundation.org/newsletter-sign-up)。
 
-我们也希望这个内容系列是互动的——你希望我们讨论什么？有哪些 FreeBSD 问题可以帮你解决？请[联系我们](https://freebsdfoundation.org/about-us/contact-us/)，告诉我们你的想法。
+我们也希望这个内容系列是互动的——你希望我们讨论什么？有哪些 FreeBSD 问题可以帮你解决？请 [联系我们](https://freebsdfoundation.org/about-us/contact-us/)，告诉我们你的想法。

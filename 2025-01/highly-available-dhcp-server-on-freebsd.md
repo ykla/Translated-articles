@@ -102,13 +102,13 @@ DHCP 节点 `DHCPs1` 和 `DHCPs2` 的 `/etc/rc.conf` 文件是相同的（除了
 
 ``sh
 root@DHCPs1:/ # cat /etc/rc.conf
-hostname=DHCPs1
-ifconfig_em0="inet 10.0.10.251/24 up"
-sshd_enable=YES
-sendmail_enable=NONE
-clear_tmp_enable=YES
-syslogd_flags="-ss"
-dumpdev=NO
+hostname = DHCPs1
+ifconfig_em0 = "inet 10.0.10.251/24 up"
+sshd_enable = YES
+sendmail_enable = NONE
+clear_tmp_enable = YES
+syslogd_flags = "-ss"
+dumpdev = NO
 
 ```
 
@@ -116,10 +116,10 @@ dumpdev=NO
 
 现在你需要安装 ISC DHCP 服务器，由于当前版本是 4.4.x，软件包名相应为 `isc-dhcp44-server`，我们使用命令 `pkg(8)` 来安装。
 
-```sh
+``` sh
 root@DHCPs1:/ # pkg update -f -y
 The package management tool is not yet installed on your system.
-Bootstrapping pkg from pkg+http://pkg.FreeBSD.org/FreeBSD:11:amd64//quarterly, please wait...
+Bootstrapping pkg from pkg+http://pkg.FreeBSD.org/FreeBSD: 11: amd64//quarterly, please wait...
 Verifying signature with trusted certificate pkg.freebsd.org.2013102301... done
 [nextcloud] Installing pkg-1.10.5...
 [nextcloud] Extracting pkg-1.10.5: 100%
@@ -138,7 +138,7 @@ root@DHCPs1:/ #
 现在让我们安装软件包 `isc-dhcp44-server`。
 
 
-```sh
+``` sh
 root@DHCPs1:/ # pkg install isc-dhcp44-server
 Updating FreeBSD repository catalogue...
 FreeBSD repository is up to date.
@@ -167,22 +167,22 @@ Message from isc-dhcp44-server-4.4.1_3:
 ****  This port installs the dhcp daemon, but doesn't invoke dhcpd by default.
       If you want to invoke dhcpd at startup, add these lines to /etc/rc.conf:
 
-            dhcpd_enable="YES"                          # dhcpd enabled?
-            dhcpd_flags="-q"                            # command option(s)
-            dhcpd_conf="/usr/local/etc/dhcpd.conf"      # configuration file
-            dhcpd_ifaces=""                             # ethernet interface(s)
-            dhcpd_withumask="022"                       # file creation mask
+            dhcpd_enable = "YES"                          # dhcpd enabled?
+            dhcpd_flags = "-q"                            # command option(s)
+            dhcpd_conf = "/usr/local/etc/dhcpd.conf"      # configuration file
+            dhcpd_ifaces = ""                             # ethernet interface(s)
+            dhcpd_withumask = "022"                       # file creation mask
 
 ****  If compiled with paranoia support (the default), the following rc.conf
       options are also supported:
 
-            dhcpd_chuser_enable="YES"           # runs w/o privileges?
-            dhcpd_withuser="dhcpd"              # user name to run as
-            dhcpd_withgroup="dhcpd"             # group name to run as
-            dhcpd_chroot_enable="YES"           # runs chrooted?
-            dhcpd_devfs_enable="YES"            # use devfs if available?
-            dhcpd_rootdir="/var/db/dhcpd"       # directory to run in
-            dhcpd_includedir=""       # directory with config-
+            dhcpd_chuser_enable = "YES"           # runs w/o privileges?
+            dhcpd_withuser = "dhcpd"              # user name to run as
+            dhcpd_withgroup = "dhcpd"             # group name to run as
+            dhcpd_chroot_enable = "YES"           # runs chrooted?
+            dhcpd_devfs_enable = "YES"            # use devfs if available?
+            dhcpd_rootdir = "/var/db/dhcpd"       # directory to run in
+            dhcpd_includedir = ""       # directory with config-
                                                   files to include
 
 ****  WARNING: never edit the chrooted or jailed dhcpd.conf file but
@@ -194,7 +194,7 @@ Message from isc-dhcp44-server-4.4.1_3:
 
 配置使用单一网络段 10.0.10.0/24，为客户端分配最后一段在 10-250 的地址。参数 `split 128` 会将负载在 DHCP 服务器节点之间平均分配。由于这只是示例，我们将使用 1.1.1.1 和 9.9.9.9 作为 DNS 服务器，以及 `domain.com` 作为域名。需要说明的是，仅在 `primary` 节点（在我们的例子中为 `DHCPs1`）上设置参数 `split 128`。正如 `man dhcpd.conf` 页面所建议的，我们将 **“为两个服务器使用相同的主配置文件，并有一个单独的文件包含对等声明以及主文件。”**，这样做 **“有助于避免配置不一致。”**
 
-```sh
+``` sh
 root@DHCPs1:/ # cat /usr/local/etc/dhcpd.conf
 # CORE
 failover peer "ha-dhcp" {
@@ -213,7 +213,7 @@ failover peer "ha-dhcp" {
 include "/usr/local/etc/dhcpd.conf.SHARED";
 ```
 
-```sh
+``` sh
 root@DHCPs1:/ # cat /usr/local/etc/dhcpd.conf.SHARED
 # CLIENTS
 subnet 10.0.10.0 netmask 255.255.255.0 {
@@ -234,7 +234,7 @@ subnet 10.0.10.0 netmask 255.255.255.0 {
 
 ……secondary 节点
 
-```sh
+``` sh
 root@DHCPs2:~ # cat /usr/local/etc/dhcpd.conf
 # CORE
 failover peer "ha-dhcp" {
@@ -252,7 +252,7 @@ failover peer "ha-dhcp" {
 include "/usr/local/etc/dhcpd.conf.SHARED";
 ```
 
-```sh
+``` sh
 root@DHCPs2:/ # cat /usr/local/etc/dhcpd.conf.SHARED
 # CLIENTS
 subnet 10.0.10.0 netmask 255.255.255.0 {
@@ -275,8 +275,8 @@ subnet 10.0.10.0 netmask 255.255.255.0 {
 
 现在让我们在两个节点上启动 DHCP 服务器。
 
-```sh
-root@DHCPs1:~ # sysrc dhcpd_enable=YES
+``` sh
+root@DHCPs1:~ # sysrc dhcpd_enable = YES
 dhcpd_enable:  -> YES
 root@DHCPs1:~ # service isc-dhcpd start
 Starting dhcpd.
@@ -288,16 +288,16 @@ Config file: /usr/local/etc/dhcpd.conf
 Database file: /var/db/dhcpd/dhcpd.leases
 PID file: /var/run/dhcpd/dhcpd.pid
 Wrote 122 leases to leases file.
-Listening on BPF/em0/08:00:27:3c:ab:c8/10.0.10.0/24
-Sending on   BPF/em0/08:00:27:3c:ab:c8/10.0.10.0/24
+Listening on BPF/em0/08:00:27:3c: ab: c8/10.0.10.0/24
+Sending on   BPF/em0/08:00:27:3c: ab: c8/10.0.10.0/24
 Sending on   Socket/fallback/fallback-net
 failover peer ha-dhcp: I move from normal to startup
 ```
 
 ……在 secondary 节点上也是一样。
 
-```sh
-root@DHCPs2:~ # sysrc dhcpd_enable=YES
+``` sh
+root@DHCPs2:~ # sysrc dhcpd_enable = YES
 dhcpd_enable:  -> YES
 root@DHCPs2:~ # service isc-dhcpd onestart
 Starting dhcpd.
@@ -309,15 +309,15 @@ Config file: /usr/local/etc/dhcpd.conf
 Database file: /var/db/dhcpd/dhcpd.leases
 PID file: /var/run/dhcpd/dhcpd.pid
 Wrote 122 leases to leases file.
-Listening on BPF/em0/08:00:27:de:9b:3d/10.0.10.0/24
-Sending on   BPF/em0/08:00:27:de:9b:3d/10.0.10.0/24
+Listening on BPF/em0/08:00:27: de: 9b: 3d/10.0.10.0/24
+Sending on   BPF/em0/08:00:27: de: 9b: 3d/10.0.10.0/24
 Sending on   Socket/fallback/fallback-net
 failover peer ha-dhcp: I move from communications-interrupted to startup
 ```
 
 现在，由于高可用 DHCP 服务器的两个节点都已启动，让我们在 DHCP 客户端——在我们的示例中为 **`DHCPc`**——上尝试获取 DHCP 租约。
 
-```sh
+``` sh
 root@DHCPc:~ # dhclient em0
 DHCPREQUEST on em0 to 255.255.255.255 port 67
 DHCPREQUEST on em0 to 255.255.255.255 port 67
@@ -325,14 +325,14 @@ DHCPACK from 10.0.10.251
 bound to 10.0.10.131 -- renewal in 302119 seconds.
 ```
 
-```sh
+``` sh
 root@DHCPc:~ # ifconfig em0
-em0: flags=8843 metric 0 mtu 1500
-        options=9b
-        ether 08:00:27:d9:45:96
-        hwaddr 08:00:27:d9:45:96
+em0: flags = 8843 metric 0 mtu 1500
+        options = 9b
+        ether 08:00:27: d9:45:96
+        hwaddr 08:00:27: d9:45:96
         inet 10.0.10.131 netmask 0xffffff00 broadcast 10.0.10.255
-        nd6 options=29
+        nd6 options = 29
         media: Ethernet autoselect (1000baseT )
         status: active
 ```
@@ -343,11 +343,11 @@ em0: flags=8843 metric 0 mtu 1500
 
 所需的“额外配置”如下。
 
-```ini
+``` ini
 group
   {
     host DHCPc {
-      hardware ethernet 08:00:27:d9:45:96;
+      hardware ethernet 08:00:27: d9:45:96;
       fixed-address 10.0.10.9;
     }
   }
@@ -355,7 +355,7 @@ group
 
 需要在两个节点的 `/usr/local/etc/dhcpd.conf.SHARED` 配置文件中都添加，新的共享配置文件如下所示。
 
-```sh
+``` sh
 root@DHCPs1:~ # cat /usr/local/etc/dhcpd.conf.SHARED
 # CLIENTS
 subnet 10.0.10.0 netmask 255.255.255.0 {
@@ -370,7 +370,7 @@ subnet 10.0.10.0 netmask 255.255.255.0 {
   group
   {
     host DHCPc {
-      hardware ethernet 08:00:27:d9:45:96;
+      hardware ethernet 08:00:27: d9:45:96;
       fixed-address 10.0.10.9;
     }
   }
@@ -386,7 +386,7 @@ subnet 10.0.10.0 netmask 255.255.255.0 {
 
 让我们再次尝试从同一 DHCP 客户端获取地址。
 
-```sh
+``` sh
 root@DHCPs1:~ # cat /usr/local/etc/dhcpd.conf.SHARED
 # CLIENTS
 subnet 10.0.10.0 netmask 255.255.255.0 {
@@ -401,7 +401,7 @@ subnet 10.0.10.0 netmask 255.255.255.0 {
   group
   {
     host DHCPc {
-      hardware ethernet 08:00:27:d9:45:96;
+      hardware ethernet 08:00:27: d9:45:96;
       fixed-address 10.0.10.9;
     }
   }
@@ -417,7 +417,7 @@ subnet 10.0.10.0 netmask 255.255.255.0 {
 
 让我们再次尝试从同一 DHCP 客户端获取地址。
 
-```sh
+``` sh
 root@DHCPc:~ # pkill dhclient
 root@DHCPc:~ # service netif restart
 root@DHCPc:~ # dhclient em0
@@ -437,14 +437,14 @@ DHCPACK from 10.0.10.252
 bound to 10.0.10.9 -- renewal in 302400 seconds.
 ```
 
-```sh
+``` sh
 root@DHCPc:~ # ifconfig em0
-em0: flags=8843 metric 0 mtu 1500
-options=9b
-ether 08:00:27:d9:45:96
-hwaddr 08:00:27:d9:45:96
+em0: flags = 8843 metric 0 mtu 1500
+options = 9b
+ether 08:00:27: d9:45:96
+hwaddr 08:00:27: d9:45:96
 inet 10.0.10.9 netmask 0xffffff00 broadcast 10.0.10.255
-nd6 options=29
+nd6 options = 29
 media: Ethernet autoselect (1000baseT )
 status: active
 ```

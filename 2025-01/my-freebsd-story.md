@@ -4,7 +4,7 @@
 - 作者：𝚟𝚎𝚛𝚖𝚊𝚍𝚎𝚗
 - 2018/09
 
-由于 [Roman Zolotarev](https://www.romanzolotarev.com/) 邀请我为他的 ***Tell Your BSD Story（讲述你的 BSD 故事）*** 页面撰写一篇文章，我实在无法拒绝。该页面原本位于 **[https://www.bsdjobs.com/people/hi.html](https://www.bsdjobs.com/people/hi.html)**，但很遗憾，Roman 后来放弃了 **bsdjobs.com** 这个域名。我本想尽量简短，但看来还是不够直白 :🙂:
+由于 [Roman Zolotarev](https://www.romanzolotarev.com/) 邀请我为他的 ***Tell Your BSD Story（讲述你的 BSD 故事）*** 页面撰写一篇文章，我实在无法拒绝。该页面原本位于 **[https://www.bsdjobs.com/people/hi.html](https://www.bsdjobs.com/people/hi.html)**，但很遗憾，Roman 后来放弃了 **bsdjobs.com** 这个域名。我本想尽量简短，但看来还是不够直白 : 🙂:
 
 最近也被添加到了页面 [**cybersynapse.ro**](https://cybersynapse.ro/Vermaden_My_FreeBSD_Story.php)。
 
@@ -12,7 +12,7 @@
 
 ![](https://vermaden.wordpress.com/wp-content/uploads/2018/09/atari-2600.png?w=960)
 
-那时我甚至不知道它是 *Atari 2600*，我只称它为 **Video Computer System** …… 当时我也完全不懂英语。花了大约二十年，我才偶然发现这个 **Video Computer System** 实际上是 *Atari 2600* :🙂:
+那时我甚至不知道它是 *Atari 2600*，我只称它为 **Video Computer System** …… 当时我也完全不懂英语。花了大约二十年，我才偶然发现这个 **Video Computer System** 实际上是 *Atari 2600* : 🙂:
 
 这台设备只用来玩电子游戏。
 
@@ -22,7 +22,7 @@
 
 1998 年底，我拥有了第一台 PC，当然预装了 *Windows*，它既是游戏机，也是日常工具。有一次我深入研究 *Windows 注册表*（它的概念和实现让我感到厌恶）以及由 **CMD.EXE** 提供的有限命令行界面。我记得，这台机器的核心并不是 CPU 和主板，而是图形加速器——传奇的 *3Dfx Voodoo* 显卡。这个公司（*3Dfx*）的态度和理念，也像 *AMIGA* 一样，对我影响深远。
 
-因此，我现在的笔记本外观也是这种风格 :🙂:
+因此，我现在的笔记本外观也是这种风格 : 🙂:
 
 ![](https://vermaden.wordpress.com/wp-content/uploads/2018/09/laptop.jpg?w=960)
 
@@ -30,7 +30,7 @@
 
 ![](https://vermaden.wordpress.com/wp-content/uploads/2018/09/nfs.jpg?w=960)
 
-从 *AMIGA* 迁移到 PC 后，它再也没有“感觉对了”。游戏很酷，但 *Windows* 系统烂完了。随着时间推移，不同版本的 *Windows* 和硬件改进不断出现。当时 *Windows XP* 已经很沉重，更别提硬件要求更高的 *Windows 2000*。至于大家对 *Windows ME* 的所有抱怨，我并不完全理解。它的崩溃频率与 *Windows 98* 或 *Windows 98 Second Edition* 相当，也许只是我的硬件不同 :🙂:
+从 *AMIGA* 迁移到 PC 后，它再也没有“感觉对了”。游戏很酷，但 *Windows* 系统烂完了。随着时间推移，不同版本的 *Windows* 和硬件改进不断出现。当时 *Windows XP* 已经很沉重，更别提硬件要求更高的 *Windows 2000*。至于大家对 *Windows ME* 的所有抱怨，我并不完全理解。它的崩溃频率与 *Windows 98* 或 *Windows 98 Second Edition* 相当，也许只是我的硬件不同 : 🙂:
 
 ![](https://vermaden.wordpress.com/wp-content/uploads/2018/09/windowsme.png?w=960)
 
@@ -38,7 +38,7 @@
 
 我一直在尝试各种替代方案，这也促使我在 2003 年尝试 *Linux*。在阅读了各种发行版的理念后，我决定用 *Slackware Linux* 跑 *KDE 3*。当时我的朋友使用 *Aurox Linux*（波兰少数几个 *Linux* 发行版之一），并建议我也这样做——特别是在解决潜在问题时，因为他已经熟悉这个系统，而且他最近刚放弃了 *Windows*。但 *Slackware* 听起来更合适，所以我选择了这条路径。一开始，我在用 *Windows XP* 和 *Slackware Linux* 双系统，因为我在 *Windows* 世界里一切都运作正常，而在 *Linux* 世界里常常感到无助，所以如果需要玩游戏或解决 *Linux* 问题，我就会重启回 *Windows*。我还记得当时对双剪贴板（PRIMARY 和 SECONDARY）的概念感到非常陌生。我很惊讶，为什么 *Linux* 这个“更优秀”的系统（至少宣传如此）需要一个系统托盘程序来管理剪贴板。在 *Windows* 上很直观，[CTRL]+[C] 复制，[CTRL]+[V] 粘贴就完成了，但在 *Linux*（现在我知道这是 *X11* 的特性）中，有两个剪贴板，需要由 *KDE 3* 的这个小托盘程序同步。我也难以接受，如果关闭了进行复制操作的应用程序，最后一次 [CTRL]+[C] 的内容就会“丢失”。我在 *Slackware* 上稍微安定了一段时间，但不久就不适应了。我真的不喜欢手动管理软件包依赖，而且 *KDE 3* 非常丑陋，尽管尝试了各种可能的方案，我仍无法将它调成好看的界面。
 
-在使用 *Slackware* 半年以后，我再次查看 *Linux* 发行版，并决定尝试 *Gentoo Linux*。我完全赞同下面的形象，它形象地展示了首次安装 *Gentoo Linux* 的体验 :🙂:
+在使用 *Slackware* 半年以后，我再次查看 *Linux* 发行版，并决定尝试 *Gentoo Linux*。我完全赞同下面的形象，它形象地展示了首次安装 *Gentoo Linux* 的体验 : 🙂:
 
 ![](https://vermaden.wordpress.com/wp-content/uploads/2018/09/gentoo-fly.png?w=960)
 
@@ -62,15 +62,15 @@
 
 ![](https://vermaden.wordpress.com/wp-content/uploads/2018/09/gigabyte-ga-7dpxdw.jpg?w=960)
 
-这套双 CPU 配置在当时不常见，但对我来说非常适合。我从 nvidia 的闭源驱动换成了开源的 nv 驱动，因为 nvidia 驱动会每隔几天就打断我的系统运行时间 :🙂:
+这套双 CPU 配置在当时不常见，但对我来说非常适合。我从 nvidia 的闭源驱动换成了开源的 nv 驱动，因为 nvidia 驱动会每隔几天就打断我的系统运行时间 : 🙂:
 
-我在这台桌面机器上累计达到了 30 天的正常运行时间，对于没有应急 UPS 的系统来说还不错 :🙂:
+我在这台桌面机器上累计达到了 30 天的正常运行时间，对于没有应急 UPS 的系统来说还不错 : 🙂:
 
 ![](https://vermaden.wordpress.com/wp-content/uploads/2018/09/uptime-vermaden.png?w=960)
 
-这是我最后一次在 FreeBSD 上（至少在我的机器上）使用 ECC 内存，当时 FreeBSD 上还没有 ZFS:🙂: 光阴荏苒，我开始感受到对更快硬件的需求。同时，我也对 *Intel* 显卡产生了兴趣，于是换上了新主板和当时最快的 *Intel X3000 GMA* 显卡——虽然听起来很愚蠢——使用 *Asus P5B-V*……这是个烂的主意，因为 *FreeBSD* 的图形栈尚不支持这款 *Intel* 显卡。最初我使用软件 VESA 驱动，但问题不在于驱动性能（我当时还有四核 *Intel Q6600 CPU*），而是在屏幕分辨率上。当时我有 1280 x 1024 的显示器，但只能使用 1024 x 768，体验极差。我决定暂时尝试其他方案，等待 *FreeBSD* 对 *Intel X3000* 的支持到来。我需要尽快解决，因为当时我还需要撰写我的 *硕士论文*。
+这是我最后一次在 FreeBSD 上（至少在我的机器上）使用 ECC 内存，当时 FreeBSD 上还没有 ZFS: 🙂: 光阴荏苒，我开始感受到对更快硬件的需求。同时，我也对 *Intel* 显卡产生了兴趣，于是换上了新主板和当时最快的 *Intel X3000 GMA* 显卡——虽然听起来很愚蠢——使用 *Asus P5B-V*……这是个烂的主意，因为 *FreeBSD* 的图形栈尚不支持这款 *Intel* 显卡。最初我使用软件 VESA 驱动，但问题不在于驱动性能（我当时还有四核 *Intel Q6600 CPU*），而是在屏幕分辨率上。当时我有 1280 x 1024 的显示器，但只能使用 1024 x 768，体验极差。我决定暂时尝试其他方案，等待 *FreeBSD* 对 *Intel X3000* 的支持到来。我需要尽快解决，因为当时我还需要撰写我的 *硕士论文*。
 
-那是 2007 年中期。我想尝试 *Linux* 发行版光谱的另一端——*Ubuntu*。我不能再更“桌面化”了 :🙂: 它当然顺利安装了 *GNOME 2* 桌面环境，但不幸的是 pulseaudio 已经存在。当时我喜欢长时间开机（不花电费），有几件事让我非常烦恼。例如前面提到的 pulseaudio——使用一两天后声音就会冻结（即使我没有播放音乐或视频），且一直保持冻结状态。可以重启 pulseaudio 或重新加载 ALSA 模块，但状态仍然保持 *SUSFU*（Situation Unchanged Still Fucked Up, 情况没有改变还是一团糟），必须重启才行。由于我要写 *硕士论文*，没时间重装其他系统，因为 pulseaudio 在其他 *Linux* 发行版上可能同样会出问题，而 *FreeBSD* 还不支持 *Intel X3000 GMA*。总体来说 *GNOME 2* 体验还行，但我非常怀念所有自定义设置、快捷键以及自定义行为。我在 *Ubuntu* 上忍受了两个月，直到完成了我的关于 [*操作系统虚拟化*](https://toya.net.pl/~vermaden/tmp/thesis.pdf) 的 *硕士论文*（PDF 为波兰语，可用翻译工具阅读） :🙂:
+那是 2007 年中期。我想尝试 *Linux* 发行版光谱的另一端——*Ubuntu*。我不能再更“桌面化”了 : 🙂: 它当然顺利安装了 *GNOME 2* 桌面环境，但不幸的是 pulseaudio 已经存在。当时我喜欢长时间开机（不花电费），有几件事让我非常烦恼。例如前面提到的 pulseaudio——使用一两天后声音就会冻结（即使我没有播放音乐或视频），且一直保持冻结状态。可以重启 pulseaudio 或重新加载 ALSA 模块，但状态仍然保持 *SUSFU*（Situation Unchanged Still Fucked Up, 情况没有改变还是一团糟），必须重启才行。由于我要写 *硕士论文*，没时间重装其他系统，因为 pulseaudio 在其他 *Linux* 发行版上可能同样会出问题，而 *FreeBSD* 还不支持 *Intel X3000 GMA*。总体来说 *GNOME 2* 体验还行，但我非常怀念所有自定义设置、快捷键以及自定义行为。我在 *Ubuntu* 上忍受了两个月，直到完成了我的关于 [*操作系统虚拟化*](https://toya.net.pl/~vermaden/tmp/thesis.pdf) 的 *硕士论文*（PDF 为波兰语，可用翻译工具阅读） : 🙂:
 
 那时的 *Ubuntu* 长这样。
 
@@ -88,7 +88,7 @@
 
 我非常喜欢 *Solaris* 的概念和解决方案，例如 *Zones*、*ZFS*、*Crossbow*、*Comstar* 或 *IPS*（当时 *FreeBSD* 还没有 *PNGng*）。但桌面软件始终是问题所在。虽然我在 *FreeBSD Ports* 中几乎找到了和 *Linux* 一样多的应用，但在 *Solaris* 世界中总是缺少一些应用。
 
-这段 *Solaris* 体验也影响了我的灵感，所以我的 *Fluxbox* 主题也改成了 *Solaris* 风格 :🙂:
+这段 *Solaris* 体验也影响了我的灵感，所以我的 *Fluxbox* 主题也改成了 *Solaris* 风格 : 🙂:
 
 [![](https://vermaden.wordpress.com/wp-content/uploads/2018/09/vermaden-2007-07-30-solaris-java-fluxbox-system.png?w=960)](https://vermaden.wordpress.com/wp-content/uploads/2018/09/vermaden-2007-07-30-solaris-java-fluxbox-system.png)
 
@@ -98,7 +98,7 @@
 
 [![](https://vermaden.wordpress.com/wp-content/uploads/2018/09/vermaden-now.jpg?w=960)](https://vermaden.wordpress.com/wp-content/uploads/2018/09/vermaden-now.jpg)
 
-经过 15 年使用各种 *Windows*、*UNIX*（*macOS*/*AIX*/*HP-UX*/*Solaris*/*OpenSolaris*/*Illumos*/FreeBSD/OpenBSD/NetBSD）及类 UNIX（*Linux*）系统，我始终得出结论：*FreeBSD* 是“出错最少”的系统。而且每次发布更新，它表现得越来越好。某一天我会详细写为什么 *FreeBSD* 是如此出色的操作系统……如果我还没写的话 :🙂:
+经过 15 年使用各种 *Windows*、*UNIX*（*macOS*/*AIX*/*HP-UX*/*Solaris*/*OpenSolaris*/*Illumos*/FreeBSD/OpenBSD/NetBSD）及类 UNIX（*Linux*）系统，我始终得出结论：*FreeBSD* 是“出错最少”的系统。而且每次发布更新，它表现得越来越好。某一天我会详细写为什么 *FreeBSD* 是如此出色的操作系统……如果我还没写的话 : 🙂:
 
 ## 更新 1
 
